@@ -1,0 +1,21 @@
+<h2>My Tasks</h2>
+
+<div>
+  <label for="new-task">Task name: </label>
+  <input id="new-task" #taskName />
+
+  <!-- (click) 入力値をadd()に渡したあと、入力をクリアする -->
+  <button type="button" class="add-button" (click)="add(taskName.value); taskName.value=''">
+    Add task
+  </button>
+</div>
+
+<ul class="tasks">
+
+  <li *ngFor="let task of tasks">
+    <a routerLink="/detail/{{task.id}}">
+      <span class="badge">{{task.id}}</span> {{task.name}}
+    </a>
+    <button type="button" class="delete" title="delete task" (click)="delete(task)">Delete</button>
+  </li>
+</ul>
